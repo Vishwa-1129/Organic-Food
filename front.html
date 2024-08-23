@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Food Delivery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            margin-right: 20px;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust as needed */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto; /* Ensure aspect ratio is preserved */
+            display: block;
+            animation: zoomInOut 10s infinite; /* Apply zoom in and out animation */
+        }
+
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1,1);
+            }
+            50% {
+                transform: scale(1.05,1.05);
+            }
+            100% {
+                transform: scale(1,1);
+            }
+        }
+
+        /* Centered title styling */
+        .image-container h1 {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 36px;
+            margin: 0;
+            font-weight: bold;
+            z-index: 2; /* Ensure the title is above the image */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: add a background for readability */
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .text-column {
+            position: absolute;
+            bottom: 20px; /* Position text at the bottom */
+            left: 20px; /* Adjust to position text from the left */
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            text-align: left;
+            z-index: 1; /* Ensure text is above the image */
+        }
+
+        .text-column h2 {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+
+        .text-column p {
+            font-size: 18px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .text-column p::before {
+            content: "\2714"; /* Unicode for checkmark */
+            color: #4CAF50; /* Green color for checkmark */
+            font-size: 24px; /* Size of the checkmark */
+            margin-right: 10px; /* Space between checkmark and text */
+        }
+
+        .view-more {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .view-more:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="navbar-brand" href="l1.jpg">
+                <img src="l1.jpg" alt="logo" style="width:50px;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="image-container">
+            <h1>Fresh Organic Farm Market</h1> <!-- Centered Title -->
+            <img src="i6.jpg" alt="Organic Food"> <!-- Replace with your image -->
+            <div class="text-column">
+                <h2>Why Choose Us?</h2>
+                <p>100% Trusted</p>
+                <p>Organic</p>
+                <p>Hygienic</p>
+                <a href="homepage.html" class="view-more">View More</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Ratings and Reviews</title>
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+    
+        
+        
+        input[type=text], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          resize: vertical;
+        }
+        
+        input[type=submit] {
+          background-color: #04AA6D;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+        
+        .container {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+        h1{
+            text-align: center;
+            width: 90%;
+            padding: 20px;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+    
+        
+        }
+        .about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto; /* Center website */
+            max-width: 2000px; /* Max width */
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* Arrange items in a vertical stack */
+            gap: 20px; /* Space between rows */
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .feedback {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback .like-dislike {
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback .like-dislike span {
+            font-size: 20px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .feedback .like-dislike .count {
+            font-weight: bold;
+        }
+
+        .review {
+            margin-bottom: 15px;
+        }
+
+        .review h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .review .rating {
+            font-size: 18px;
+            color: gold;
+            margin-bottom: 10px;
+        }
+
+        .review .comment {
+            font-size: 16px;
+        }
+
+        .review-form {
+            margin-top: 20px;
+        }
+
+        .review-form input, .review-form textarea, .review-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .review-form button {
+            background-color: #04AA6D;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .review-form button:hover {
+            background-color: #037d52;
+        }
+
+        .rating-section .average-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rating-section .average-rating span {
+            margin-right: 5px;
+        }
+
+        .rating-section .average-rating p {
+            margin: 0;
+        }
+
+        .rating-section hr {
+            border: 3px solid #f1f1f1;
+            margin: 20px 0;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bar-chart .bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .bar-chart .bar div {
+            font-size: 16px;
+            width: 50px;
+        }
+
+        .bar-chart .bar .bar-container {
+            flex-grow: 1;
+            background-color: #f1f1f1;
+            height: 18px;
+            margin: 0 10px;
+        }
+
+        .bar-chart .bar .bar-fill {
+            height: 100%;
+            background-color: #04AA6D; /* Default green */
+        }
+
+        .bar-chart .bar .count {
+            width: 50px;
+            text-align: right;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .feedback {
+                flex-direction: column; /* Stack like/dislike buttons vertically on small screens */
+                align-items: flex-start;
+            }
+
+            .feedback .like-dislike {
+                margin-bottom: 10px; /* Add space between like and dislike buttons */
+            }
+        }
+        
+       
+        .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icons img {
+            width: 50px;  /* Set a uniform width */
+            height: 50px; /* Set a uniform height */
+            object-fit: contain; /* Ensure the image fits within the specified size */
+        }
+
+       
+    </style>
+</head>
+<body>
+    <img src="conclusion.jpg" height="650px" width="1270px">
+    <div class="container">
+        <!-- User Rating Section -->
+        <div class="section rating-section">
+            <h2>User Rating</h2>
+            <div class="average-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <p>4.1 average based on 254 reviews.</p>
+            </div>
+            <hr>
+            <div class="bar-chart">
+                <div class="bar">
+                    <div>5 star</div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-5" style="width: 60%;"></div>
+                    </div>
+                    <div class="count">150</div>
+                </div>
+                <div class="bar">
+                    <div>4 star</div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-4" style="width: 30%;"></div>
+                    </div>
+                    <div class="count">63</div>
+                </div>
+                <div class="bar">
+                    <div>3 star</div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-3" style="width: 10%;"></div>
+                    </div>
+                    <div class="count">15</div>
+                </div>
+                <div class="bar">
+                    <div>2 star</div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-2" style="width: 4%;"></div>
+                    </div>
+                    <div class="count">6</div>
+                </div>
+                <div class="bar">
+                    <div>1 star</div>
+                    <div class="bar-container">
+                        <div class="bar-fill bar-1" style="width: 2%;"></div>
+                    </div>
+                    <div class="count">2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Reviews Section -->
+        <div class="section reviews-container">
+            <h2>Customer Reviews</h2>
+            <!-- Review 1 -->
+            <div class="review">
+                <h3>John Doe</h3>
+                <div class="rating">
+                    ★★★★☆ <!-- Example of a 4-star rating -->
+                </div>
+                <div class="comment">
+                    <p>"The vegetable delivery was prompt and the produce was incredibly fresh. I highly recommend this service for anyone looking for quality vegetables."</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review">
+                <h3>Jane Smith</h3>
+                <div class="rating">
+                    ★★★☆☆ <!-- Example of a 3-star rating -->
+                </div>
+                <div class="comment">
+                    <p>"The website is easy to navigate, but the vegetable delivery was a bit late. The quality was good, though."</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review">
+                <h3>Michael Johnson</h3>
+                <div class="rating">
+                    ★★★★☆ <!-- Example of a 4-star rating -->
+                </div>
+                <div class="comment">
+                    <p>"I am impressed with the variety of vegetables available and the ease of ordering through the website. Delivery was quick and the produce was top-notch."</p>
+                </div>
+            </div>
+
+            <!-- Review Form -->
+            <div class="review-form">
+                <h3>Add Your Review</h3>
+                <select id="review-rating" required>
+                    <option value="" disabled selected>Select Rating</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <input type="text" id="reviewer-name" placeholder="Your name" required>
+                <textarea id="review-text" rows="4" placeholder="Write your review here..." required></textarea>
+                <button onclick="submitReview()">Submit Review</button>
+            </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="section">
+            <h2>Feedback</h2>
+            <div class="feedback">
+                <div class="like-dislike" id="like">
+                    <span class="fa fa-thumbs-up"></span><span class="count" id="like-count">180</span>
+                </div>
+                <div class="like-dislike" id="dislike">
+                    <span class="fa fa-thumbs-down"></span><span class="count" id="dislike-count">12</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('like').addEventListener('click', function() {
+            const likeCountElement = document.getElementById('like-count');
+            let likeCount = parseInt(likeCountElement.textContent);
+            likeCountElement.textContent = likeCount + 1;
+        });
+
+        document.getElementById('dislike').addEventListener('click', function() {
+            const dislikeCountElement = document.getElementById('dislike-count');
+            let dislikeCount = parseInt(dislikeCountElement.textContent);
+            dislikeCountElement.textContent = dislikeCount + 1;
+        });
+
+        function submitReview() {
+            const rating = document.getElementById('review-rating').value;
+            const reviewerName = document.getElementById('reviewer-name').value.trim();
+            const reviewText = document.getElementById('review-text').value.trim();
+            if (rating === '' || reviewerName === '' || reviewText === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Here, you could add code to send the review to a server
+            alert('Thank you for your review!');
+            
+            // For demonstration purposes, we'll add the review to the page
+            const reviewsContainer = document.querySelector('.reviews-container');
+            const newReview = document.createElement('div');
+            newReview.className = 'review';
+            newReview.innerHTML = `
+                <h3>${reviewerName}</h3>
+                <div class="rating">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+                <div class="comment"><p>${reviewText}</p></div>
+            `;
+            reviewsContainer.insertBefore(newReview, reviewsContainer.querySelector('.review-form'));
+            
+            // Clear the input fields
+            document.getElementById('review-rating').value = '';
+            document.getElementById('reviewer-name').value = '';
+            document.getElementById('review-text').value = '';
+        }
+    </script>
+    
+        <h1>CONTACTUS</h1>
+        <p>This website is not only for online orders but also for employees.Anyone who are willing to see travelling work and work at market join our team please let us know your information here.
+        
+        </p>
+        <div class="container">
+            <form action="action_page.php">
+          
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              
+              <label for="lname">Mobile No:</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+          
+          
+              <label for="country">City</label>
+              <select id="country" name="country">
+                <option value="australia">Hyderabad</option>
+                <option value="india">Warangal</option>
+                <option value="canada">Karimnagar</option>
+                <option value="usa">Adilabad</option>
+                <option value="australia">Nizamabad</option>
+                <option value="india">Medak</option>
+                <option value="canada">Nalgonda</option>
+                <option value="usa">Khammam</option>
+                <option value="canada">Rangareddy</option>
+                <option value="usa">Mehabubnagar</option>
+              </select>
+          
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:50px"></textarea>
+          
+              <input type="submit" value="Submit">
+          
+            </form>
+          </div>
+          
+    
+      <h2 style="color: purple;text-align: center;">Fresh Organic Form Market</h2>
+      <p>For any queries don't hesitate to contact us.</p>
+      <P style="text-align: center;">organicform@5@gmail.com</P>
+      <p style="text-align: center;">phone:7095675490</p>
+    
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327596.04377973045!2d78.36427487861944!3d17.45111156578429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99362ecf167d%3A0x8fb6d7551b66436d!2sUppal%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1723453330913!5m2!1sen!2sin" 
+      width="1260" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="icons">
+        <a href="https://wa.me/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.facebook.com/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+        </a>
+    </div>
+
+    <p style="background-color: black;font-size: 20px;color: white;text-align: center;width: 1260px;"><b>THANK YOU FOR VISITING , VISIT AGAIN!</b></p>
+
+         
+
+</body>
+</html>
+
+
+
+
+
